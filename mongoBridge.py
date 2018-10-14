@@ -17,8 +17,8 @@ def addLinkToMyLinks():
             or request.args.get('short', '') == '':
         return "Error Request Parms are not filled out"
 
-    link = MyLinks(owner=request.args.get('owner', '1'), long=request.args.get('long', '2'),
-                   short=request.args.get('short', '3'))
+    link = MyLinks(owner=request.args.get('owner'), long=request.args.get('long'),
+                   short=request.args.get('short'))
     link.save()
     return 'Saved Link'
 
