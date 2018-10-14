@@ -18,5 +18,13 @@ def addLinkToMyLinks():
     link.save()
     return 'Saved Link'
 
+#should only be in test
+@app.route('/link/removeall')
+def removeAllLinks():
+    docs = MyLinks.query.all()
+    for i in range(0, len(docs)):
+        docs[i].remove()
+    return 'Removed All'
+
 if __name__ == '__main__':
     app.run()
