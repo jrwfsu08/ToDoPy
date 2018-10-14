@@ -13,8 +13,12 @@ class MyLinks(db.Document):
 
 @app.route('/link/add')
 def addLinkToMyLinks():
-    link = MyLinks(owner=request.args.get('owner', '1'), long=request.args.get('long','2'),
-                   short=request.args.get('short','3'))
+    if request.args.get('owner', '') == '' or request.args.get('long', '') == '' \
+            or request.args.get('short', '') == '':
+        return "Error Request Parms are not filled out"
+
+    link = MyLinks(owner=request.args.get('owner', '1'), long=request.args.get('long', '2'),
+                   short=request.args.get('short', '3'))
     link.save()
     return 'Saved Link'
 
